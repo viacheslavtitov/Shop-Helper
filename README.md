@@ -1,2 +1,0 @@
-# Shop-Helper
-Init project
