@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "349487345419",
+    "firebase_url": "https://shop-helper-1296f.firebaseio.com",
+    "project_id": "shop-helper-1296f",
+    "storage_bucket": "shop-helper-1296f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349487345419:android:d57e7b09e390c3b8a4fc0e",
+        "android_client_info": {
+          "package_name": "com.shop.helper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349487345419-8d2kfe3s32q2vpgm3cl3heed0ddg3g1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVF2vLPEYGWUvI1XPFBgRf8nVe9yItpZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349487345419-8d2kfe3s32q2vpgm3cl3heed0ddg3g1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
