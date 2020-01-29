@@ -10,18 +10,17 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.shop.helper.R
 
-
-abstract class BaseActivity : AppCompatActivity(), BaseView {
+abstract class BaseFragment : Fragment(), BaseView {
 
     private var toast: Toast? = null
     private var progressDialog: Dialog? = null
 
     override fun showMessage(message: String) {
         toast?.cancel()
-        toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
+        toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
         toast?.show()
     }
 
@@ -41,7 +40,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     }
 
     override fun showProgress() {
-        runOnUiThread {
+        activity?.runOnUiThread {
             if (progressDialog == null) {
                 progressDialog = getProgressDialog()
             }
@@ -51,8 +50,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     }
 
     override fun hideProgress() {
-        runOnUiThread {
-            if (!isFinishing) {
+        activity?.runOnUiThread {
+            if (!isDetached) {
                 progressDialog?.hide()
             }
             progressDialog?.dismiss()
@@ -67,10 +66,10 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     private fun getProgressDialog(): Dialog? {
         val view: View =
-            LayoutInflater.from(this).inflate(R.layout.layout_wait, null)
+            LayoutInflater.from(context).inflate(R.layout.layout_wait, null)
         val messageView: TextView = view.findViewById(R.id.message)
         messageView.setText(R.string.message_loading)
-        val alertDialog: AlertDialog = AlertDialog.Builder(this)
+        val alertDialog: AlertDialog = AlertDialog.Builder(context!!)
             .setCancelable(false)
             .setView(view)
             .create()
@@ -81,11 +80,5 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
             ColorDrawable(Color.TRANSPARENT)
         )
         return alertDialog
-    }
-
-    protected fun replaceFragment(containerId: Int, fragment: BaseFragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(containerId, fragment)
-            .commit()
     }
 }
