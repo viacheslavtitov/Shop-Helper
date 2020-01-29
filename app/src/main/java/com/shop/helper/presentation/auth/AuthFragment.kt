@@ -10,11 +10,12 @@ import com.google.android.material.textfield.TextInputLayout
 import com.shop.helper.R
 import com.shop.helper.presentation.base.BaseFragment
 
-class AuthFragment : BaseFragment() {
+class AuthFragment : BaseFragment(), AuthView {
 
     private lateinit var textInputLayoutPhoneNumber: TextInputLayout
     private lateinit var textInputEditTextPhoneNumber: TextInputEditText
     private lateinit var buttonSignIn: Button
+    private var presenter: AuthPresenter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,23 +28,19 @@ class AuthFragment : BaseFragment() {
         buttonSignIn = view.findViewById(R.id.button_sign_in)
         val buttonSignUp: Button = view.findViewById(R.id.button_sign_up)
         buttonSignUp.setOnClickListener {
-            forwardSignUp()
+            presenter?.forwardToSignUp()
         }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        presenter = AuthPresenter(this, activity as AuthActivity)
     }
 
     override fun onResume() {
         super.onResume()
         getToolbar()?.visibility = View.GONE
-    }
-
-    private fun forwardSignUp() {
-
     }
 
 }
