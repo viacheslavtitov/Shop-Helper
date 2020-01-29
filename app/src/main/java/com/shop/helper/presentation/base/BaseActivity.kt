@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ProgressBar
@@ -11,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.shop.helper.R
 
 
@@ -18,6 +20,13 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     private var toast: Toast? = null
     private var progressDialog: Dialog? = null
+    protected lateinit var toolbar: Toolbar
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+    }
 
     override fun showMessage(message: String) {
         toast?.cancel()
@@ -67,7 +76,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     private fun getProgressDialog(): Dialog? {
         val view: View =
-            LayoutInflater.from(this).inflate(R.layout.layout_wait, null)
+            LayoutInflater.from(this).inflate(R.layout.layout_progress_dialog, null)
         val messageView: TextView = view.findViewById(R.id.message)
         messageView.setText(R.string.message_loading)
         val alertDialog: AlertDialog = AlertDialog.Builder(this)

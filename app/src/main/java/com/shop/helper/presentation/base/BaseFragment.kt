@@ -10,8 +10,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.shop.helper.R
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 abstract class BaseFragment : Fragment(), BaseView {
 
@@ -66,7 +68,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     private fun getProgressDialog(): Dialog? {
         val view: View =
-            LayoutInflater.from(context).inflate(R.layout.layout_wait, null)
+            LayoutInflater.from(context).inflate(R.layout.layout_progress_dialog, null)
         val messageView: TextView = view.findViewById(R.id.message)
         messageView.setText(R.string.message_loading)
         val alertDialog: AlertDialog = AlertDialog.Builder(context!!)
@@ -80,5 +82,11 @@ abstract class BaseFragment : Fragment(), BaseView {
             ColorDrawable(Color.TRANSPARENT)
         )
         return alertDialog
+    }
+
+    protected fun getToolbar(): Toolbar? {
+        if (activity is BaseActivity) {
+            return (activity as BaseActivity).toolbar
+        } else return null
     }
 }
