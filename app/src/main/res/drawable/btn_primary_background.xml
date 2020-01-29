@@ -20,6 +20,26 @@
                 android:radius="3dp" />
         </shape>
     </item>
+    <item android:state_enabled="true">
+        <shape>
+            <gradient
+                android:startColor="@color/colorButtonPrimary"
+                android:endColor="@color/colorButtonPrimary"
+                android:angle="270" />
+            <corners
+                android:radius="3dp" />
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <gradient
+                android:startColor="@color/colorButtonDisabled"
+                android:endColor="@color/colorButtonDisabled"
+                android:angle="270" />
+            <corners
+                android:radius="3dp" />
+        </shape>
+    </item>
     <item android:color="@color/colorButtonPrimary" >
         <shape>
             <gradient
