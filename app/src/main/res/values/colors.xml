@@ -3,8 +3,11 @@
     <color name="colorPrimary">#f58a42</color>
     <color name="colorPrimaryDark">#c26629</color>
     <color name="colorButtonPrimary">#fcba03</color>
+    <color name="colorButtonSecondary">#ffda73</color>
     <color name="colorButtonPrimaryDark">#e3aa0e</color>
     <color name="colorButtonDisabled">#ebeae8</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorTextPrimary">#24221d</color>
+    <color name="colorTextSecondary">#8c887d</color>
+    <color name="white">#ffffff</color>
 </resources>

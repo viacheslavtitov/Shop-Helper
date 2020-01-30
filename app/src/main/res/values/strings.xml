@@ -5,4 +5,12 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="error_field_not_valid">Field is not valid</string>
+    <string name="first_name">First name:</string>
+    <string name="first_name_hint">Viacheslav</string>
+    <string name="second_name">Second name:</string>
+    <string name="second_name_hint">Titov</string>
+    <string name="choose_your_city">Choose your city</string>
+    <string name="not_required">(not required)</string>
+    <string name="click">Click</string>
+    <string name="title_sign_up">@string/sign_up</string>
 </resources>

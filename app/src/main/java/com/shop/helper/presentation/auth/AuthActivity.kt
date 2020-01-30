@@ -1,9 +1,10 @@
 package com.shop.helper.presentation.auth
 
 import android.os.Bundle
-import android.view.WindowManager
+import android.view.MenuItem
 import com.shop.helper.R
 import com.shop.helper.presentation.base.BaseActivity
+
 
 class AuthActivity : BaseActivity() {
 

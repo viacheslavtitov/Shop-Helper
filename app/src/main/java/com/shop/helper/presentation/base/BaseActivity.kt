@@ -26,6 +26,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         super.onCreate(savedInstanceState)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun showMessage(message: String) {
@@ -92,9 +94,23 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         return alertDialog
     }
 
-    protected fun replaceFragment(containerId: Int, fragment: BaseFragment) {
+    fun replaceFragment(containerId: Int, fragment: BaseFragment) {
         supportFragmentManager.beginTransaction()
             .replace(containerId, fragment)
+            .commit()
+    }
+
+    fun addFragment(containerId: Int, fragment: BaseFragment) {
+        supportFragmentManager.beginTransaction()
+            .add(containerId, fragment)
+            .addToBackStack(fragment.tag)
+            .commit()
+    }
+
+    fun addFragment(containerId: Int, tag: String, fragment: BaseFragment) {
+        supportFragmentManager.beginTransaction()
+            .add(containerId, fragment, tag)
+            .addToBackStack(tag)
             .commit()
     }
 }
