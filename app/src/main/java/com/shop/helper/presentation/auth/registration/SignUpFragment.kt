@@ -47,7 +47,7 @@ class SignUpFragment : BaseFragment(), SignUpView {
 
         }
         buttonChooseCity.setOnClickListener {
-
+            presenter?.forwardToCities()
         }
         return view
     }
