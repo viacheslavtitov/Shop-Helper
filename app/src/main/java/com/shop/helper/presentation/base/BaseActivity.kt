@@ -100,10 +100,16 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
             .commit()
     }
 
+    fun replaceFragment(containerId: Int, tag: String?, fragment: BaseFragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(containerId, fragment)
+            .addToBackStack(tag)
+            .commit()
+    }
+
     fun addFragment(containerId: Int, fragment: BaseFragment) {
         supportFragmentManager.beginTransaction()
             .add(containerId, fragment)
-            .addToBackStack(fragment.tag)
             .commit()
     }
 

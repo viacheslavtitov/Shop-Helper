@@ -60,7 +60,6 @@ class SignUpFragment : BaseFragment(), SignUpView {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            getToolbar()?.visibility = View.GONE
             activity?.supportFragmentManager?.popBackStack()
         }
         return super.onOptionsItemSelected(item)

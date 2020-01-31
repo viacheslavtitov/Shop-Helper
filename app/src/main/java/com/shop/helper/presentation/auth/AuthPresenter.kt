@@ -14,7 +14,8 @@ class AuthPresenter(view: AuthView, activity: AuthActivity) :
     }
 
     fun forwardToSignUp() {
-        activity?.addFragment(R.id.frame_container, SignUpFragment())
+        val fragment = SignUpFragment()
+        activity?.replaceFragment(R.id.frame_container, fragment.tag, fragment)
     }
 
     fun checkPhoneNumberOnline(inputNumber: String) {
