@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.shop.helper.R
 
 
@@ -28,6 +29,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        toolbar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
     }
 
     override fun showMessage(message: String) {

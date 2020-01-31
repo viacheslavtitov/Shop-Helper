@@ -94,5 +94,4 @@ class SignUpFragment : BaseFragment(), SignUpView {
     override fun phoneNumberNotValidated() {
         textInputLayoutPhoneNumber.error = getString(R.string.error_field_not_valid)
     }
-
 }
