@@ -15,4 +15,5 @@
     <string name="title_sign_up">@string/sign_up</string>
     <string name="add">Add</string>
     <string name="search">Search</string>
+    <string name="add_new_city">Add new city</string>
 </resources>
