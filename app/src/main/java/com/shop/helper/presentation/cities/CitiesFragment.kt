@@ -1,10 +1,7 @@
 package com.shop.helper.presentation.cities
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.recyclerview.widget.RecyclerView
 import com.shop.helper.R
 import com.shop.helper.presentation.base.BaseActivity
@@ -47,6 +44,10 @@ class CitiesFragment : BaseFragment(), CitiesView {
             activity?.supportFragmentManager?.popBackStack()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_cities, menu)
     }
 
 }
