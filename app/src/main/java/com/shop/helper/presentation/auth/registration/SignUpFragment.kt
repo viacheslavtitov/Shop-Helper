@@ -1,6 +1,8 @@
 package com.shop.helper.presentation.auth.registration
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.Button
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.shop.helper.R
+import com.shop.helper.presentation.auth.AuthActivity
 import com.shop.helper.presentation.base.BaseFragment
 
 class SignUpFragment : BaseFragment(), SignUpView {
@@ -20,6 +23,8 @@ class SignUpFragment : BaseFragment(), SignUpView {
     private lateinit var textInputLayoutSecondName: TextInputLayout
     private lateinit var textInputEditTextSecondName: TextInputEditText
     private lateinit var buttonChooseCity: Button
+
+    private var presenter: SignUpPresenter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +52,12 @@ class SignUpFragment : BaseFragment(), SignUpView {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter = SignUpPresenter(this, activity as AuthActivity)
+        textInputEditTextPhoneNumber.addTextChangedListener(textWatcherPhoneNumber)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -63,6 +74,25 @@ class SignUpFragment : BaseFragment(), SignUpView {
             activity?.supportFragmentManager?.popBackStack()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private val textWatcherPhoneNumber = object : TextWatcher {
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
+
+        override fun afterTextChanged(text: Editable?) {
+            val newText: String = text.toString()
+            presenter?.checkPhoneNumberOnline(newText)
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+    }
+
+    override fun phoneNumberValidated() {
+        textInputLayoutPhoneNumber.error = ""
+    }
+
+    override fun phoneNumberNotValidated() {
+        textInputLayoutPhoneNumber.error = getString(R.string.error_field_not_valid)
     }
 
 }
