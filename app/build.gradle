@@ -37,6 +37,12 @@ dependencies {
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.9.7'
     //logs
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    //http
+    implementation("com.squareup.okhttp3:okhttp:4.3.1")
+    implementation "com.squareup.okhttp3:logging-interceptor:4.3.1"
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.5.0"
+    implementation "com.google.code.gson:gson:2.8.5"
     //tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
