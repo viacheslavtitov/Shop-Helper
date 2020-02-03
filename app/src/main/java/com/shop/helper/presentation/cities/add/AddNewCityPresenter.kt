@@ -12,7 +12,9 @@ import com.shop.helper.data.network.base.provideGson
 import com.shop.helper.utils.DISK_HTTP_CACHE_SIZE
 import com.shop.helper.utils.GOOGLE_PLACES_BASE_API_URL
 import com.shop.helper.utils.GOOGLE_PLACES_API_KEY
+import kotlinx.coroutines.*
 import okhttp3.HttpUrl
+import kotlin.coroutines.coroutineContext
 
 class AddNewCityPresenter(view: AddNewCityView, activity: BaseActivity) :
     BasePresenter<AddNewCityView, BaseActivity>() {
@@ -29,6 +31,13 @@ class AddNewCityPresenter(view: AddNewCityView, activity: BaseActivity) :
     }
 
     fun searchCity(query: String) {
-        searchCityInteractor.execute(query)
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = searchCityInteractor.execute(query)
+            withContext(Dispatchers.Main) {
+                if(response.isSuccessful) {
+
+                }
+            }
+        }
     }
 }

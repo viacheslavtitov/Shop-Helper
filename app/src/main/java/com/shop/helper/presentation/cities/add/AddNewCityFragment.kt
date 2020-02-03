@@ -64,10 +64,11 @@ class AddNewCityFragment : BaseFragment(), AddNewCityView {
 
             override fun onQueryTextChange(s: String): Boolean {
                 Timber.d(s)
-                presenter?.searchCity(s)
+                if (s.length > 2) {
+                    presenter?.searchCity(s)
+                }
                 return false
             }
         })
     }
-
 }

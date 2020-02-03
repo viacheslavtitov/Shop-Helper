@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class SearchCityInteractor(private val repository: PlacesRepository) : BaseInteractor<String, Response<Any>> {
 
-    override fun execute(query: String): Response<Any> {
+    override suspend fun execute(query: String): Response<Any> {
         return repository.searchCity(query, getLanguage(ShopHelperApplication.instance))
     }
 
