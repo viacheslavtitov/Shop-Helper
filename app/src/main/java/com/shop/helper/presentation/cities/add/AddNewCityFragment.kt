@@ -5,6 +5,7 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
 import com.shop.helper.R
+import com.shop.helper.data.network.places.entities.Predictions
 import com.shop.helper.presentation.base.BaseActivity
 import com.shop.helper.presentation.base.BaseFragment
 import timber.log.Timber
@@ -70,5 +71,9 @@ class AddNewCityFragment : BaseFragment(), AddNewCityView {
                 return false
             }
         })
+    }
+
+    override fun displayCities(cities: List<Predictions>?) {
+        
     }
 }
