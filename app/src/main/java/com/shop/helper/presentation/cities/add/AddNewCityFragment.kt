@@ -3,6 +3,7 @@ package com.shop.helper.presentation.cities.add
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shop.helper.R
 import com.shop.helper.data.network.places.entities.Predictions
@@ -16,6 +17,7 @@ class AddNewCityFragment : BaseFragment(), AddNewCityView {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
 
+    private var adapter: AddNewCityAdapter? = null
     private var presenter: AddNewCityPresenter? = null
 
     override fun onCreateView(
@@ -25,6 +27,7 @@ class AddNewCityFragment : BaseFragment(), AddNewCityView {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_add_new_city, null)
         recyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
         return view
     }
 
@@ -74,6 +77,11 @@ class AddNewCityFragment : BaseFragment(), AddNewCityView {
     }
 
     override fun displayCities(cities: List<Predictions>?) {
-        
+        adapter = if (cities != null) {
+            AddNewCityAdapter(cities)
+        } else {
+            null
+        }
+        recyclerView.adapter = adapter
     }
 }

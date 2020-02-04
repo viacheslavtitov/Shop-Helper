@@ -10,4 +10,5 @@
     <color name="colorTextPrimary">#24221d</color>
     <color name="colorTextSecondary">#8c887d</color>
     <color name="white">#ffffff</color>
+    <color name="colorDivider">#adacac</color>
 </resources>
