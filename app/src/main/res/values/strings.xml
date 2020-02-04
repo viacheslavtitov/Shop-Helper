@@ -17,4 +17,5 @@
     <string name="search">Search</string>
     <string name="add_new_city">Add new city</string>
     <string name="language">en</string>
+    <string name="error_invalid_request">Invalid request</string>
 </resources>

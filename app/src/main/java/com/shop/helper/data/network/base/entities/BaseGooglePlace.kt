@@ -4,7 +4,14 @@ abstract class BaseGooglePlace {
 
     abstract val status: String
 
-    fun isSuccessful(): Boolean {
-        return status.isNotEmpty() && status == "OK"
+    fun status() :GooglePlaceStatus {
+        if(status.isNotEmpty()) {
+            if(status == "OK") {
+                return GooglePlaceStatus.OK
+            } else if(status == "INVALID_REQUEST") {
+                return GooglePlaceStatus.INVALID_REQUEST
+            }
+        }
+        return GooglePlaceStatus.UNKNOWN
     }
 }

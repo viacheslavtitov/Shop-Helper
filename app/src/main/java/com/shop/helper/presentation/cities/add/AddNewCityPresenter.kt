@@ -1,6 +1,8 @@
 package com.shop.helper.presentation.cities.add
 
+import com.shop.helper.R
 import com.shop.helper.ShopHelperApplication
+import com.shop.helper.data.network.base.entities.GooglePlaceStatus
 import com.shop.helper.data.network.base.provideGson
 import com.shop.helper.data.network.base.provideHttpUrl
 import com.shop.helper.data.network.base.provideOkHttpClient
@@ -37,10 +39,13 @@ class AddNewCityPresenter(view: AddNewCityView, activity: BaseActivity) :
             val response = searchCityInteractor.execute(query)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    if (response.body()?.isSuccessful() == true) {
-                        view?.displayCities(response.body()?.predictions)
-                    } else {
-
+                    when (response.body()?.status()) {
+                        GooglePlaceStatus.OK -> {
+                            view?.displayCities(response.body()?.predictions)
+                        }
+                        GooglePlaceStatus.INVALID_REQUEST -> {
+                            view?.showMessage(R.string.error_invalid_request)
+                        }
                     }
                 }
             }

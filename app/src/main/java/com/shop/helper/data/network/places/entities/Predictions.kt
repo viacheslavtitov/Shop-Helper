@@ -7,7 +7,8 @@ data class Predictions(
     @SerializedName("id") val id: String,
     @SerializedName("place_id") val placeId: String,
     @SerializedName("reference") val reference: String,
-    @SerializedName("structured_formatting") val structured: Structured
+    @SerializedName("structured_formatting") val structured: Structured,
+    @SerializedName("types") val types: Array<String>
 ) {
     fun getPrimaryName(): String {
         return structured?.mainText
