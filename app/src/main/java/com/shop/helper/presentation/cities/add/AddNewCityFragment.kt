@@ -1,24 +1,31 @@
 package com.shop.helper.presentation.cities.add
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shop.helper.R
+import com.shop.helper.ShopHelperApplication
 import com.shop.helper.data.network.places.entities.Predictions
-import com.shop.helper.presentation.base.BaseActivity
 import com.shop.helper.presentation.base.BaseFragment
 import timber.log.Timber
+import javax.inject.Inject
 
 
-class AddNewCityFragment : BaseFragment(), AddNewCityView {
+class AddNewCityFragment @Inject constructor() : BaseFragment(), AddNewCityView {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
 
     private var adapter: AddNewCityAdapter? = null
-    private var presenter: AddNewCityPresenter? = null
+    @Inject lateinit var presenter: AddNewCityPresenter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity?.applicationContext as ShopHelperApplication).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +40,12 @@ class AddNewCityFragment : BaseFragment(), AddNewCityView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = AddNewCityPresenter(this, activity as BaseActivity)
+        presenter?.attachView(this, getBaseActivity())
+    }
+
+    override fun onDestroyView() {
+        presenter?.detachView()
+        super.onDestroyView()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

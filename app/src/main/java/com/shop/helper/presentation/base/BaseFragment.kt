@@ -89,4 +89,8 @@ abstract class BaseFragment : Fragment(), BaseView {
             return (activity as BaseActivity).toolbar
         } else return null
     }
+
+    protected fun getBaseActivity() : BaseActivity {
+        return activity as BaseActivity
+    }
 }

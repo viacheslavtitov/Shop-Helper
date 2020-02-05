@@ -3,8 +3,9 @@ package com.shop.helper.data.network.places
 import com.shop.helper.data.network.places.entities.SearchCities
 import retrofit2.Response
 import retrofit2.Retrofit
+import javax.inject.Inject
 
-class PlacesRepository(retrofit: Retrofit, private val apiKey: String) {
+class PlacesRepository @Inject constructor(retrofit: Retrofit, private val apiKey: String) {
 
     private val service: PlaceService = retrofit.create(PlaceService::class.java)
 
